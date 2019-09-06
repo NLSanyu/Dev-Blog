@@ -1,3 +1,4 @@
-# Dev Blog
+# Dev Blog 
 
-Posts about all things code
+Read and write posts about all things code
+
