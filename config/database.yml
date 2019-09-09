@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 2
+
+development:
+  <<: *default
+  database: devblog_development
+  username: postgres
+  password: ''
+
+test:
+  <<: *default
+  database: devblog_test
+  username: postgres
+  password: ''
+
+production:
+  <<: *default
+  database: devblog_db
+  username: postgres
+  password: ''

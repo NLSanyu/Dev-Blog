@@ -1,9 +1,6 @@
+require_relative "models/post.rb"
+
 class DevBlog < Sinatra::Base
-
-    configure :development do
-        register Sinatra::Reloader
-    end    
-
     get '/' do
       "Welcome to Dev Blog!"
     end
