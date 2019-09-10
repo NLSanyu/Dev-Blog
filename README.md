@@ -1,4 +1,6 @@
 # Dev Blog 
 
-Read and write posts about all things code
+```An API for blog posts about all things code```
+
+### Developed in Ruby (Sinatra)
 

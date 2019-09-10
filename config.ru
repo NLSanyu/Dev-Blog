@@ -1,6 +1,6 @@
 require 'bundler'
 Bundler.require
 
-require './app/app'
+require './app'
 
-run DevBlog
+run Sinatra::Application
