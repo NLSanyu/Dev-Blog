@@ -15,7 +15,6 @@ end
 
 # get posts
 get '/posts/?:page?' do
-    # get_page(params[:page])
     @posts = Post.all
     json @posts
 end
@@ -37,16 +36,17 @@ post '/posts' do
 end
 
 # update a post
-# put '/posts/:id' do
-#     @post = Post.find_by_id params[:id]
-#     update_post = JSON.parse request.body.read  
-
-#     if @post.update_attributes(update_post)
-#         json @post
-#     else
-#         json @post.errors.messages
-#     end
-# end
+put '/posts/:id' do
+    @post = Post.find_by_id params[:id]
+    updates = JSON.parse request.body.read 
+    puts updates 
+    if @post.update_attributes(updates)
+        puts @post
+        json @post
+    else
+        json @post.errors.messages
+    end
+end
 
 # delete posts
 # delete '/posts/delete/:id' do
