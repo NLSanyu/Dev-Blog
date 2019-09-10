@@ -31,7 +31,7 @@ post '/posts' do
     new_post = JSON.parse request.body.read  
     @post = Post.new( new_post )
     if @post.save
-        @post.to_json
+        json @post
     end
 end
 
@@ -41,7 +41,6 @@ put '/posts/:id' do
     updates = JSON.parse request.body.read 
     puts updates 
     if @post.update_attributes(updates)
-        puts @post
         json @post
     else
         json @post.errors.messages
@@ -49,7 +48,7 @@ put '/posts/:id' do
 end
 
 # delete posts
-# delete '/posts/delete/:id' do
-#     @post = Post.find_by_id params[:id]
-#     @post.destroy
-# end
+delete '/posts/:id/delete' do
+    @post = Post.find_by_id params[:id]
+    @post.destroy
+end
