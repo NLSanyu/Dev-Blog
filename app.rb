@@ -10,9 +10,15 @@ class App < Sinatra::Base
     end
 
     # get posts
-    get '/posts/?:page?' do
+    get '/posts' do
         @posts = Post.all
         json @posts
+    end
+
+    # get one post
+    get '/posts/:id' do
+        @post = Post.find_by_id params[:id]
+        json @post
     end
 
     # search posts by title
@@ -48,5 +54,5 @@ class App < Sinatra::Base
         @post = Post.find_by_id params[:id]
         @post.destroy
     end
-    
+
 end
