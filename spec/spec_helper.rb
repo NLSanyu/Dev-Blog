@@ -1,7 +1,8 @@
+ENV['RACK_ENV'] = 'test'
+
 require 'rack/test'
 require 'rspec'
-
-ENV['RACK_ENV'] = 'test'
+require 'database_cleaner'
 
 require File.expand_path '../../app.rb', __FILE__
 
@@ -11,3 +12,14 @@ module RSpecMixin
 end
 
 RSpec.configure { |c| c.include RSpecMixin }
+
+DatabaseCleaner.strategy = :truncation
+
+RSpec.configure do |c|
+  c.before(:all) do
+    DatabaseCleaner.clean
+  end
+  c.after(:each) do
+    DatabaseCleaner.clean
+  end
+end
